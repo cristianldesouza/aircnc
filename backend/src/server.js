@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path');
 
 const routes = require('./routes');
 
@@ -12,6 +13,7 @@ mongoose.connect('mongodb+srv://aircnc:aircnc@aircnc-mtu6h.mongodb.net/aircnc?re
 
 app.use(cors());
 app.use(express.json());
+app.use('/files', express.static(path.resolve(__dirname, '..', 'uploads')));
 app.use(routes);
 
 
